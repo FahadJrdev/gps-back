@@ -1,0 +1,73 @@
+models:
+  Vehicle:
+    customer_id: id foreign
+    alias: string nullable
+    type: string
+    license_plate: string unique
+    make: string
+    model: string
+    year: integer
+    color: string
+    registration_date: date
+    system_type: string nullable
+    status: enum:active,inactive
+    relationships:
+      hasMany: ServiceHistory, MaintenanceHistory
+      hasOne: GpsDevice
+
+  Customer:
+    identification: string
+    user_id: id foreign
+    phone: string
+    relationships:
+      hasMany: Vehicle
+
+  GpsDevice:
+    vehicle_id: id foreign
+    imei: string unique
+    device_type: string
+    manufacturer: string
+    model: string
+    firmware_version: string
+    installation_date: date nullable
+    status: enum:active,inactive,maintenance
+
+  Technician:
+    user_id: id foreign
+    phone: string
+    relationships:
+      hasMany: ServiceHistory
+
+  ServiceHistory:
+    vehicle_id: id foreign
+    technician_id: id foreign
+    service_type: enum:installation,uninstallation,maintenance,inspection
+    scheduled_date: date
+    completion_date: date nullable
+    observations: text
+    status: enum:scheduled,in_progress,completed
+    kilometers: integer nullable
+
+  MaintenanceHistory:
+    vehicle_id: id foreign
+    maintenance_type: string
+    kilometers: integer
+    completion_date: date
+    observations: text
+
+controllers:
+  Vehicle:
+    resource: api
+    index:
+      query: all
+      response: paginate
+    show:
+      response: resource
+  Customer:
+    resource: api
+  GpsDevice:
+    resource: api
+  ServiceHistory:
+    resource: api
+
+seeders: Vehicle, Customer, Technician, GpsDevice, ServiceHistory, MaintenanceHistory

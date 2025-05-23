@@ -16,3 +16,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('users', UserController::class);
 });
+
+Route::apiResource('vehicles', App\Http\Controllers\VehicleController::class);
+
+Route::apiResource('customers', App\Http\Controllers\CustomerController::class);
+
+Route::apiResource('gps-devices', App\Http\Controllers\GpsDeviceController::class);
+
+Route::apiResource('service-histories', App\Http\Controllers\ServiceHistoryController::class);

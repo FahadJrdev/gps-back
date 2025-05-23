@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7c5e46ce-4ff1-42fe-b755-5af1f4a890ba",
+		"_postman_id": "6c447cab-9c6d-47d9-8f69-25ac159e8092",
 		"name": "GPS Tracking Project API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19785413"
@@ -371,6 +371,801 @@
 							],
 							"path": [
 								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "List Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/vehicles?page=1&per_page=10",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": 1,\n    \"alias\": \"Main Truck\",\n    \"type\": \"Truck\",\n    \"license_plate\": \"ABC123\",\n    \"make\": \"Ford\",\n    \"model\": \"F-150\",\n    \"year\": 2022,\n    \"color\": \"Red\",\n    \"registration_date\": \"2022-01-15\",\n    \"status\": \"active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/vehicles",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/vehicles/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vehicle",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"alias\": \"Updated Alias\",\n    \"status\": \"inactive\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/vehicles/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/vehicles/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "List Customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/customers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"identification\": \"ID123456\",\n    \"phone\": \"+1234567890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/customers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/customers/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"+9876543210\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/customers/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/customers/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GPS Devices",
+			"item": [
+				{
+					"name": "List GPS Devices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/gps-devices",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"gps-devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create GPS Device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicle_id\": 1,\n    \"imei\": \"123456789012345\",\n    \"device_type\": \"Tracker Pro\",\n    \"manufacturer\": \"GPS Inc\",\n    \"model\": \"TP-100\",\n    \"firmware_version\": \"1.2.3\",\n    \"status\": \"active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/gps-devices",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"gps-devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get GPS Device",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/gps-devices/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"gps-devices",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update GPS Device",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"maintenance\",\n    \"firmware_version\": \"1.2.4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/gps-devices/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"gps-devices",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete GPS Device",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/gps-devices/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"gps-devices",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service History",
+			"item": [
+				{
+					"name": "List Service History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/service-history",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"service-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Service History",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicle_id\": 1,\n    \"technician_id\": 1,\n    \"service_type\": \"maintenance\",\n    \"scheduled_date\": \"2023-06-15\",\n    \"status\": \"scheduled\",\n    \"observations\": \"Routine maintenance check\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/service-history",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"service-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/service-history/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"service-history",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Service History",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"completed\",\n    \"completion_date\": \"2023-06-15\",\n    \"kilometers\": 15000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/service-history/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"service-history",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service History",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/service-history/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"service-history",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Maintenance History",
+			"item": [
+				{
+					"name": "List Maintenance History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/maintenance-history",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"maintenance-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Maintenance History",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicle_id\": 1,\n    \"maintenance_type\": \"Oil Change\",\n    \"kilometers\": 15000,\n    \"completion_date\": \"2023-06-15\",\n    \"observations\": \"Synthetic oil used\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/maintenance-history",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"maintenance-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Maintenance History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/maintenance-history/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"maintenance-history",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Maintenance History",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"kilometers\": 15200,\n    \"observations\": \"Also replaced air filter\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/maintenance-history/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"maintenance-history",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Maintenance History",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/maintenance-history/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"maintenance-history",
+								"1"
 							]
 						}
 					},

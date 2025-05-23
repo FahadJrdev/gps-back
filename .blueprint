@@ -1,0 +1,57 @@
+created:
+    - app/Http/Controllers/VehicleController.php
+    - app/Http/Controllers/CustomerController.php
+    - app/Http/Controllers/GpsDeviceController.php
+    - app/Http/Controllers/ServiceHistoryController.php
+    - database/factories/VehicleFactory.php
+    - database/factories/CustomerFactory.php
+    - database/factories/GpsDeviceFactory.php
+    - database/factories/TechnicianFactory.php
+    - database/factories/ServiceHistoryFactory.php
+    - database/factories/MaintenanceHistoryFactory.php
+    - database/migrations/2025_05_23_124452_create_vehicles_table.php
+    - database/migrations/2025_05_23_124453_create_customers_table.php
+    - database/migrations/2025_05_23_124454_create_gps_devices_table.php
+    - database/migrations/2025_05_23_124455_create_technicians_table.php
+    - database/migrations/2025_05_23_124456_create_service_histories_table.php
+    - database/migrations/2025_05_23_124457_create_maintenance_histories_table.php
+    - app/Models/Vehicle.php
+    - app/Models/Customer.php
+    - app/Models/GpsDevice.php
+    - app/Models/Technician.php
+    - app/Models/ServiceHistory.php
+    - app/Models/MaintenanceHistory.php
+    - database/seeders/VehicleSeeder.php
+    - database/seeders/CustomerSeeder.php
+    - database/seeders/TechnicianSeeder.php
+    - database/seeders/GpsDeviceSeeder.php
+    - database/seeders/ServiceHistorySeeder.php
+    - database/seeders/MaintenanceHistorySeeder.php
+    - tests/Feature/Http/Controllers/VehicleControllerTest.php
+    - tests/Feature/Http/Controllers/CustomerControllerTest.php
+    - tests/Feature/Http/Controllers/GpsDeviceControllerTest.php
+    - tests/Feature/Http/Controllers/ServiceHistoryControllerTest.php
+    - app/Http/Requests/VehicleStoreRequest.php
+    - app/Http/Requests/VehicleUpdateRequest.php
+    - app/Http/Requests/CustomerStoreRequest.php
+    - app/Http/Requests/CustomerUpdateRequest.php
+    - app/Http/Requests/GpsDeviceStoreRequest.php
+    - app/Http/Requests/GpsDeviceUpdateRequest.php
+    - app/Http/Requests/ServiceHistoryStoreRequest.php
+    - app/Http/Requests/ServiceHistoryUpdateRequest.php
+    - app/Http/Resources/VehicleResource.php
+    - app/Http/Resources/CustomerCollection.php
+    - app/Http/Resources/CustomerResource.php
+    - app/Http/Resources/GpsDeviceCollection.php
+    - app/Http/Resources/GpsDeviceResource.php
+    - app/Http/Resources/ServiceHistoryCollection.php
+    - app/Http/Resources/ServiceHistoryResource.php
+updated:
+    - routes/api.php
+models:
+    Vehicle: { customer_id: 'id foreign', alias: 'string nullable', type: string, license_plate: 'string unique', make: string, model: string, year: integer, color: string, registration_date: date, system_type: 'string nullable', status: 'enum:active,inactive', relationships: { hasMany: 'ServiceHistory, MaintenanceHistory', hasOne: GpsDevice } }
+    Customer: { identification: string, user_id: 'id foreign', phone: string, relationships: { hasMany: Vehicle } }
+    GpsDevice: { vehicle_id: 'id foreign', imei: 'string unique', device_type: string, manufacturer: string, model: string, firmware_version: string, installation_date: 'date nullable', status: 'enum:active,inactive,maintenance' }
+    Technician: { user_id: 'id foreign', phone: string, relationships: { hasMany: ServiceHistory } }
+    ServiceHistory: { vehicle_id: 'id foreign', technician_id: 'id foreign', service_type: 'enum:installation,uninstallation,maintenance,inspection', scheduled_date: date, completion_date: 'date nullable', observations: text, status: 'enum:scheduled,in_progress,completed', kilometers: 'integer nullable' }
+    MaintenanceHistory: { vehicle_id: 'id foreign', maintenance_type: string, kilometers: integer, completion_date: date, observations: text }
